@@ -1,14 +1,14 @@
 public class PrivateClass {
-		private String classC;
+		private String description;
 		public PrivateClass (String description){
-			setClassName(description);		
+			this.description = description;		
 		}
 		public String getClassName() {
-			return classC;
+			return this.description;
 		}
 
 		public void setClassName(String description) {
-			this.classC = description;
+			this.description = description;
 		}
 
 }
