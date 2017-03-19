@@ -1,8 +1,8 @@
-import org.junit.Test;
+
 
 public class SanitizeDesanitize implements PrivacyMechanismInterface<Double> {
 	private PrivateClass classC1 = new PrivateClass("c1");
-	private PrivateClass classC2 = new PrivateClass("c1");
+	private PrivateClass classC2 = new PrivateClass("c2");
 	
 	public Double Sanitize(PrivateClass c, Double original) throws PrivacyMechanismException {
 			try {
@@ -16,7 +16,7 @@ public class SanitizeDesanitize implements PrivacyMechanismInterface<Double> {
 				}
 			} catch (PrivacyMechanismException i) {
 				System.out.println("Error! Your choice is not in the list");
-				return original;
+				return null;
 			}
 	}
 
@@ -31,22 +31,7 @@ public class SanitizeDesanitize implements PrivacyMechanismInterface<Double> {
 			}
 		} catch (PrivacyMechanismException i) {
 			System.out.println("Error! Your choice is not in the list");
-			return sanitized;
+			return null;
 		}	
-	}
-
-	@Test
-	public void test() {
-		SanitizeDesanitize t1 = new SanitizeDesanitize();
-		PrivateClass c1 = new PrivateClass("c1");
-		PrivateClass c2 = new PrivateClass("c2");
-		PrivateClass c3 = new PrivateClass("c3");
-		double t1_Sanitize = t1.Sanitize(c1, 2.0);
-		System.out.println(t1_Sanitize);
-		double t1_Desanitize = t1.Desanitize(c1, t1_Sanitize);
-		System.out.println(t1_Desanitize);
-		System.out.println(t1.Sanitize(c2, 2.0));
-		System.out.println(t1.Sanitize(c3, 2.0));
-
 	}
 }
