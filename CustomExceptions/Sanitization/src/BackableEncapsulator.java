@@ -1,7 +1,4 @@
 import java.util.ArrayList;
-
-
-
 public class BackableEncapsulator {
 	private PrivacyMechanismInterface<Double> pdi = new SanitizeDesanitize();
 	private ArrayList<Double> mData = new ArrayList<Double>();
@@ -36,12 +33,12 @@ public class BackableEncapsulator {
 		
 	}
 
-	public Object getData(int dataIndex) throws PrivacyMechanismException{
+	public Double getData(int dataIndex) throws PrivacyMechanismException{
 		PrivateClass c1 = new PrivateClass("c1");
 		return getData(dataIndex, c1);
 	}
 
-	public Object getData(int dataIndex, PrivateClass c) throws PrivacyMechanismException, NullPointerException {
+	public Double getData(int dataIndex, PrivateClass c) throws PrivacyMechanismException, NullPointerException {
 		try 
 		{
 	
@@ -53,6 +50,6 @@ public class BackableEncapsulator {
 				}
 		} catch(NullPointerException f){
 			return null;
-	}
+		}
 	}
 }
