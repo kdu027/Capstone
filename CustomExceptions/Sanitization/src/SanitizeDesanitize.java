@@ -4,34 +4,26 @@ public class SanitizeDesanitize implements PrivacyMechanismInterface<Double> {
 	private PrivateClass classC1 = new PrivateClass("c1");
 	private PrivateClass classC2 = new PrivateClass("c2");
 	
-	public Double Sanitize(PrivateClass c, Double original) throws PrivacyMechanismException {
-			try {
+	public Double sanitize(PrivateClass c, Double original) throws PrivacyMechanismException {
+			
 				//System.out.println(c.equals(classC1));
-				if (c.getClassName().equals(classC1.getClassName())) {
+				if (c.equals(classC1)) {
 					return 2 * original;
-				} else if (c.getClassName().equals(classC2.getClassName())){
+				} else if (c.equals(classC2)){
 					return -2 * original;
 				} else {
-					throw new PrivacyMechanismException();
+					throw new PrivacyMechanismException("Error! Your choice is not in the list");
 				}
-			} catch (PrivacyMechanismException i) {
-				System.out.println("Error! Your choice is not in the list");
-				return null;
-			}
 	}
 
-	public Double Desanitize(PrivateClass c, Double sanitized) throws PrivacyMechanismException {
-		try {
-			if (c.getClassName().equals(classC1.getClassName())) {
+	public Double desanitize(PrivateClass c, Double sanitized) throws PrivacyMechanismException {
+		
+			if (c.equals(classC1)) { //Update
 				return 1.0/2 * sanitized;
-			} else if (c.getClassName().equals(classC2.getClassName())){
+			} else if (c.equals(classC2)){
 				return -1.0/2 * sanitized;
 			} else {
-				throw new PrivacyMechanismException();
-			}
-		} catch (PrivacyMechanismException i) {
-			System.out.println("Error! Your choice is not in the list");
-			return null;
-		}	
+				throw new PrivacyMechanismException("Error! Your choice is not in the list");
+			}	
 	}
 }

@@ -12,6 +12,7 @@ public class PrivacyMechanismException extends IllegalArgumentException {
 
 	public PrivacyMechanismException(String s) {
 		super(s);
+		System.out.println(s);
 	}
 
 	public PrivacyMechanismException(Throwable cause) {
